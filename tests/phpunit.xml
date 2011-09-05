@@ -1,0 +1,12 @@
+<phpunit bootstrap="./TestHelper.php" colors="true">
+  <testsuites>
+    <testsuite name="Unit test suite">
+      <directory suffix=".php">./</directory>
+    </testsuite>
+  </testsuites>
+  <filter>
+    <whitelist>
+      <directory suffix=".php">../</directory>
+    </whitelist>
+  </filter>
+</phpunit>
