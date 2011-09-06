@@ -1,6 +1,7 @@
 <?php
+namespace laidbacktests;
 
-require_once("../src/LaidbackObject.php");
+use laidback\LaidbackObject;
 
 class LaidbackTestObject extends LaidbackObject{
 

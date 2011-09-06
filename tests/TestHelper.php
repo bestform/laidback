@@ -10,3 +10,10 @@ set_include_path('.' . PATH_SEPARATOR . BASE_PATH . '/src' . PATH_SEPARATOR . ge
 date_default_timezone_set('Europe/Berlin');
 
 error_reporting(E_ALL|E_STRICT);
+
+function autoload($class){
+  $class = APPLICATION_PATH . '/' . str_replace('\\', '/', $class) . '.php';
+  require_once($class);
+}
+
+spl_autoload_register("autoload");

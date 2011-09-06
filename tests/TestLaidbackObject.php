@@ -1,9 +1,9 @@
 <?php
 
-require_once("LaidbackTestObject.php");
+namespace laidbacktests;
+use laidbacktests;
 
-
-class TestLaidbackObject extends PHPUnit_Framework_TestCase{
+class TestLaidbackObject extends \PHPUnit_Framework_TestCase{
 
   protected $obj;
 
@@ -31,14 +31,14 @@ class TestLaidbackObject extends PHPUnit_Framework_TestCase{
   }
 
   /**
-   * @expectedException NoDataSaverException
+   * @expectedException \laidback\NoDataSaverException
    */
   public function testThrowsExceptionWhenNoDataSaverIsSet(){
     $this->obj->persist();
   }
 
   public function testUsesDataSaverToPersist(){
-    $mockDataSaver = $this->getMock("IDataSaver", array("persist"));
+    $mockDataSaver = $this->getMock("\laidback\IDataSaver", array("persist"));
     $mockDataSaver->expects($this->once())->method("persist")->with($this->equalTo($this->obj));
     $this->obj->setDataSaver($mockDataSaver);
     $this->obj->persist();

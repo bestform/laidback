@@ -1,6 +1,7 @@
 <?php
 
-require_once("NoDataSaverException.php");
+namespace laidback;
+
 
 class LaidbackObject {
 
@@ -11,8 +12,8 @@ class LaidbackObject {
   }
 
   public function findPublicAttributesByAnnotation(){
-    $reflect = new ReflectionClass($this);
-    $props = $reflect->getProperties(ReflectionProperty::IS_PUBLIC);
+    $reflect = new \ReflectionClass($this);
+    $props = $reflect->getProperties(\ReflectionProperty::IS_PUBLIC);
     $ret = array();
     foreach($props as $prop) {
       if($this->hasPersistAnnotation($prop)){
