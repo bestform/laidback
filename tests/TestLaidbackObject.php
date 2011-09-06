@@ -19,9 +19,15 @@ class TestLaidbackObject extends PHPUnit_Framework_TestCase{
     $this->assertNotNull($this->obj);
   }
 
-  public function testSetterAndGetter(){
-    $this->obj->setTeststring("test");
-    $this->assertEquals("test", $this->obj->getTeststring());
+  public function testFindPublicAttributesByAnnotation(){
+    $vars = $this->obj->findPublicAttributesByAnnotation();
+    $this->assertEquals(array("teststring" => null), $vars);
+  }
+
+  public function testReadCorrectValuesFromAnnotatedProps(){
+    $this->obj->teststring = "hoppeldibopp";
+    $vars = $this->obj->findPublicAttributesByAnnotation();
+    $this->assertEquals(array("teststring" => "hoppeldibopp"), $vars);
   }
 
 
